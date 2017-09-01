@@ -4,8 +4,13 @@ android {
     compileSdkVersion 26
     buildToolsVersion "26.0.0"
     defaultConfig {
+<<<<<<< HEAD
         applicationId "demo.webview.com"
         minSdkVersion 17
+=======
+        applicationId "com.apicloud.A6995196504966"
+        minSdkVersion 15
+>>>>>>> 306b33ca17ba375dc8943a31a5f66fbbb0f0cf5d
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -24,6 +29,12 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+<<<<<<< HEAD
     compile 'com.android.support:support-v4:26.+'
     compile 'com.android.support:appcompat-v7:26.+'
+=======
+    compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
+>>>>>>> 306b33ca17ba375dc8943a31a5f66fbbb0f0cf5d
 }

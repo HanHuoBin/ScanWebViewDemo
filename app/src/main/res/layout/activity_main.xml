@@ -1,20 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+=======
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="demo.web.com.MainActivity">
+>>>>>>> 306b33ca17ba375dc8943a31a5f66fbbb0f0cf5d
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+<<<<<<< HEAD
         android:descendantFocusability="blocksDescendants"
+=======
+>>>>>>> 306b33ca17ba375dc8943a31a5f66fbbb0f0cf5d
         android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+<<<<<<< HEAD
             android:focusable="true"
             android:focusableInTouchMode="true"
+=======
+>>>>>>> 306b33ca17ba375dc8943a31a5f66fbbb0f0cf5d
             android:orientation="vertical">
 
             <WebView
@@ -23,9 +37,13 @@
                 android:layout_height="200dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+<<<<<<< HEAD
                 android:layout_marginTop="10dp"
                 android:focusable="true"
                 android:focusableInTouchMode="true" />
+=======
+                android:layout_marginTop="10dp" />
+>>>>>>> 306b33ca17ba375dc8943a31a5f66fbbb0f0cf5d
 
             <WebView
                 android:id="@+id/web_view1"
@@ -58,10 +76,17 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp" />
+<<<<<<< HEAD
 
+=======
+>>>>>>> 306b33ca17ba375dc8943a31a5f66fbbb0f0cf5d
         </LinearLayout>
 
     </ScrollView>
 
 
+<<<<<<< HEAD
 </LinearLayout>
+=======
+</LinearLayout>
+>>>>>>> 306b33ca17ba375dc8943a31a5f66fbbb0f0cf5d
