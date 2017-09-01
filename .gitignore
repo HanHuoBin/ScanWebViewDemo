@@ -86,3 +86,8 @@ out
 build.xml
 
 proguard-project.txt
+
+app/app.iml
+build/generated/mockable-android-26.jar
+build/intermediates/dex-cache/cache.xml
+local.properties
