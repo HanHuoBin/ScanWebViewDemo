@@ -1,92 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-<<<<<<< HEAD
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-=======
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="demo.web.com.MainActivity">
->>>>>>> 306b33ca17ba375dc8943a31a5f66fbbb0f0cf5d
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-<<<<<<< HEAD
-        android:descendantFocusability="blocksDescendants"
-=======
->>>>>>> 306b33ca17ba375dc8943a31a5f66fbbb0f0cf5d
-        android:scrollbars="none">
+        android:orientation="vertical">
 
-        <LinearLayout
+        <WebView
+            android:id="@+id/web_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-<<<<<<< HEAD
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-=======
->>>>>>> 306b33ca17ba375dc8943a31a5f66fbbb0f0cf5d
-            android:orientation="vertical">
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp" />
 
-            <WebView
-                android:id="@+id/web_view"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-<<<<<<< HEAD
-                android:layout_marginTop="10dp"
-                android:focusable="true"
-                android:focusableInTouchMode="true" />
-=======
-                android:layout_marginTop="10dp" />
->>>>>>> 306b33ca17ba375dc8943a31a5f66fbbb0f0cf5d
+        <WebView
+            android:id="@+id/web_view1"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp" />
 
-            <WebView
-                android:id="@+id/web_view1"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp" />
+        <WebView
+            android:id="@+id/web_view2"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp" />
 
-            <WebView
-                android:id="@+id/web_view2"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp" />
+        <WebView
+            android:id="@+id/web_view3"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp" />
 
-            <WebView
-                android:id="@+id/web_view3"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp" />
+        <WebView
+            android:id="@+id/web_view4"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp" />
+    </LinearLayout>
 
-            <WebView
-                android:id="@+id/web_view4"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp" />
-<<<<<<< HEAD
-
-=======
->>>>>>> 306b33ca17ba375dc8943a31a5f66fbbb0f0cf5d
-        </LinearLayout>
-
-    </ScrollView>
-
-
-<<<<<<< HEAD
 </LinearLayout>
-=======
-</LinearLayout>
->>>>>>> 306b33ca17ba375dc8943a31a5f66fbbb0f0cf5d

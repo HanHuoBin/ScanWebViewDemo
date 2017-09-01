@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-<<<<<<< HEAD
-    android:layout_height="match_parent">
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerInParent="true"
-        android:src="@mipmap/mountain" />
-
-=======
     android:layout_height="match_parent"
     android:orientation="vertical">
 
@@ -21,19 +10,11 @@
         android:layout_centerInParent="true"
         android:scaleType="centerInside"
         android:src="@mipmap/burn" />
->>>>>>> 306b33ca17ba375dc8943a31a5f66fbbb0f0cf5d
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-<<<<<<< HEAD
-        android:layout_marginBottom="30dp"
-        android:gravity="center"
-        android:text="hello" />
-
-</RelativeLayout>
-=======
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
         android:gravity="center_horizontal"
@@ -41,4 +22,3 @@
         android:textSize="16sp" />
 
 </RelativeLayout>
->>>>>>> 306b33ca17ba375dc8943a31a5f66fbbb0f0cf5d

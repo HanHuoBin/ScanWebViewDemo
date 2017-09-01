@@ -2,13 +2,13 @@ package demo.webview.com;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.KeyEvent;
-import android.view.MotionEvent;
-import android.view.View;
-import android.webkit.WebChromeClient;
+import android.util.DisplayMetrics;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 /**
@@ -16,14 +16,12 @@ import java.util.Random;
  */
 
 public class MainActivity extends AppCompatActivity {
-    private WebView mWebView;
+    private WebView mWebView0;
     private WebView mWebView1;
     private WebView mWebView2;
     private WebView mWebView3;
     private WebView mWebView4;
-
-    private String[] ua = new String[]{
-            "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_8; en-us) AppleWebKit/534.50 (KHTML, like Gecko) Version/5.1 Safari/534.50",
+    private String[] userAgent = new String[]{"Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_8; en-us) AppleWebKit/534.50 (KHTML, like Gecko) Version/5.1 Safari/534.50",
             "Mozilla/5.0 (Windows; U; Windows NT 6.1; en-us) AppleWebKit/534.50 (KHTML, like Gecko) Version/5.1 Safari/534.50",
             "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0;",
             "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:2.0.1) Gecko/20100101 Firefox/4.0.1",
@@ -49,15 +47,8 @@ public class MainActivity extends AppCompatActivity {
             "Mozilla/5.0 (Windows; U; Windows NT 5.1) Gecko/20070309 Firefox/2.0.0.3",
             "Mozilla/5.0 (Windows; U; Windows NT 5.1) Gecko/20070803 Firefox/1.5.0.12",
             "Mozilla/4.0 (compatible; MSIE 12.0",
-            "Mozilla/5.0 (Windows NT 5.1; rv:44.0) Gecko/20100101 Firefox/44.0"
-    };
-
-    private String loadurl = "http://yzhsfood.com/a/210.html";
-    private String loadurl1 = "http://yzhsfood.com/a/230.html";
-    private String loadurl2 = "http://yzhsfood.com/a/240.html";
-    private String loadurl3 = "http://yzhsfood.com/a/250.html";
-    private String loadurl4 = "http://yzhsfood.com/a/260.html";
-
+            "User-Agent:Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_3_3 like Mac OS X; en-us) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8J2 Safari/6533.18.5",
+            "Mozilla/5.0 (Windows NT 5.1; rv:44.0) Gecko/20100101 Firefox/44.0"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,74 +58,85 @@ public class MainActivity extends AppCompatActivity {
         initData();
     }
 
-    private void initData() {
-        setWebView(mWebView, loadurl);
-        setWebView(mWebView1, loadurl1);
-        setWebView(mWebView2, loadurl2);
-        setWebView(mWebView3, loadurl3);
-        setWebView(mWebView4, loadurl4);
-    }
-
-    private void setWebView(WebView mWebView, String loadurl) {
-        WebSettings settings = mWebView.getSettings();
-        //添加UA,  “app/XXX”：是与h5商量好的标识，h5确认UA为app/XXX就认为该请求的终端为App
-        Random random = new Random();
-        settings.setUserAgentString(ua[random.nextInt(ua.length)]);
-        settings.setJavaScriptEnabled(false);
-
-        // 自适应屏幕
-        settings.setUseWideViewPort(true);
-        settings.setLoadWithOverviewMode(true);
-
-        // 不支持缩放(如果要支持缩放，html页面本身也要支持缩放：不能加user-scalable=no)
-        settings.setBuiltInZoomControls(true);
-        settings.setSupportZoom(true);
-        settings.setDisplayZoomControls(true);
-
-        // 隐藏scrollbar
-        mWebView.setVerticalScrollBarEnabled(false);
-        mWebView.setHorizontalScrollBarEnabled(false);
-
-        //设置参数
-        settings.setBuiltInZoomControls(true);
-
-        //设置无痕
-        settings.setAppCacheEnabled(false);// 设置缓存
-        settings.setDatabaseEnabled(false);
-        settings.setDomStorageEnabled(false);
-        settings.setCacheMode(WebSettings.LOAD_NO_CACHE);
-
-        mWebView.setWebChromeClient(new WebChromeClient());
-        mWebView.loadUrl(loadurl);
-        mWebView.setOnTouchListener(new View.OnTouchListener() {
-
-            @Override
-            public boolean onTouch(View v, MotionEvent ev) {
-
-                ((WebView) v).requestDisallowInterceptTouchEvent(true);
-
-                return false;
-            }
-        });
-    }
-
     private void initView() {
-        mWebView = (WebView) findViewById(R.id.web_view);
+        mWebView0 = (WebView) findViewById(R.id.web_view);
         mWebView1 = (WebView) findViewById(R.id.web_view1);
         mWebView2 = (WebView) findViewById(R.id.web_view2);
         mWebView3 = (WebView) findViewById(R.id.web_view3);
         mWebView4 = (WebView) findViewById(R.id.web_view4);
     }
 
-    @Override
-    public boolean onKeyDown(final int keyCode, final KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            DataCleanManager.cleanExternalCache(this);
-            DataCleanManager.cleanFiles(this);
-            DataCleanManager.cleanInternalCache(this);
-            return super.onKeyDown(keyCode, event);
+    private void initData() {
+        initWevView(mWebView0);
+        initWevView(mWebView1);
+        initWevView(mWebView2);
+        initWevView(mWebView3);
+        initWevView(mWebView4);
+    }
+
+    private void initWevView(WebView mWebView) {
+        Random urlRandom = new Random();
+        int randomNumber = urlRandom.nextInt(Config.LENGTH) + Config.START;
+        String loadUrl = Config.URL + randomNumber;
+        //声明WebSettings子类
+        WebSettings webSettings = mWebView.getSettings();
+
+        //如果访问的页面中要与Javascript交互，则webview必须设置支持Javascript
+        webSettings.setJavaScriptEnabled(true);
+        Random random = new Random();
+        webSettings.setUserAgentString(userAgent[random.nextInt(userAgent.length)]);
+
+
+        //设置自适应屏幕，两者合用
+//        webSettings.setUseWideViewPort(true); //将图片调整到适合webview的大小
+        webSettings.setLoadWithOverviewMode(true); // 缩放至屏幕的大小
+
+        //缩放操作
+        webSettings.setSupportZoom(true); //支持缩放，默认为true。是下面那个的前提。
+        webSettings.setBuiltInZoomControls(true); //设置内置的缩放控件。若为false，则该WebView不可缩放
+        webSettings.setDisplayZoomControls(false); //隐藏原生的缩放控件
+
+        //其他细节操作
+        webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK); //关闭webview中缓存
+        webSettings.setAllowFileAccess(true); //设置可以访问文件
+        webSettings.setJavaScriptCanOpenWindowsAutomatically(true); //支持通过JS打开新窗口
+        webSettings.setLoadsImagesAutomatically(true); //支持自动加载图片
+        webSettings.setDefaultTextEncodingName("utf-8");//设置编码格式
+
+        //无痕浏览
+        webSettings.setDatabaseEnabled(false);
+        webSettings.setAppCacheEnabled(false);
+        webSettings.setDomStorageEnabled(false);
+
+        int screenDensity = getResources().getDisplayMetrics().densityDpi;
+        WebSettings.ZoomDensity zoomDensity = WebSettings.ZoomDensity.MEDIUM;
+
+        switch (screenDensity) {
+
+            case DisplayMetrics.DENSITY_LOW:
+                zoomDensity = WebSettings.ZoomDensity.CLOSE;
+                break;
+
+            case DisplayMetrics.DENSITY_MEDIUM:
+                zoomDensity = WebSettings.ZoomDensity.MEDIUM;
+                break;
+
+            case DisplayMetrics.DENSITY_HIGH:
+                zoomDensity = WebSettings.ZoomDensity.FAR;
+                break;
         }
-        return super.onKeyDown(keyCode, event);
+        webSettings.setDefaultZoom(zoomDensity);
+        Map<String, String> header = new HashMap<>();
+        header.put("source", "https://m.baidu.com/ssid=83edc0cfc4a9cab1b4faa383/from=2001a/s?word=美妆");
+        mWebView.loadUrl(loadUrl, header);
+
+        mWebView.setWebViewClient(new WebViewClient() {
+            public boolean shouldOverrideUrlLoading(WebView view, String url)
+            {
+                view.loadUrl(url);
+                return true;
+            }
+        });
     }
 
 }
